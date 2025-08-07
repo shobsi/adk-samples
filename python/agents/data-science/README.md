@@ -244,9 +244,9 @@ Evaluation tests assess the overall performance and capabilities of the agent in
 
 **Run Evaluation Tests:**
 
-    ```bash
-    poetry run pytest eval
-    ```
+```bash
+poetry run pytest eval
+```
 
 
 - This command executes all test files within the `eval/` directory.
@@ -266,9 +266,9 @@ Tests assess the overall executability of the agents.
 
 **Run Tests:**
 
-    ```bash
-    poetry run pytest tests
-    ```
+```bash
+poetry run pytest tests
+```
 
 - This command executes all test files within the `tests/` directory.
 - `poetry run` ensures that pytest runs within the project's virtual environment.
