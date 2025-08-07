@@ -30,6 +30,9 @@ from .chase_sql import chase_db_tools
 from .prompts import return_instructions_bigquery
 
 NL2SQL_METHOD = os.getenv("NL2SQL_METHOD", "BASELINE")
+
+# BigQuery built-in tools in ADK
+# https://google.github.io/adk-docs/tools/built-in-tools/#bigquery
 ADK_BUILTIN_BQ_EXECUTE_SQL_TOOL = "execute_sql"
 
 
@@ -52,7 +55,6 @@ def handle_after_tool_call(
         tool_context.state["query_result"] = tool_response["rows"]
 
   return None
-
 
 
 bigquery_tool_filter = [ADK_BUILTIN_BQ_EXECUTE_SQL_TOOL]
