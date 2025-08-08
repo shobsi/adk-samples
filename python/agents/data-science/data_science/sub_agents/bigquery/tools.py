@@ -76,18 +76,18 @@ def get_database_settings():
 def update_database_settings():
     """Update database settings."""
     global database_settings
-    ddl_schema = get_bigquery_schema()
+    schema_and_samples = get_bigquery_schema_and_samples()
     database_settings = {
         "bq_project_id": get_env_var("BQ_DATA_PROJECT_ID"),
         "bq_dataset_id": get_env_var("BQ_DATASET_ID"),
-        "bq_ddl_schema": ddl_schema,
+        "bq_schema_and_samples": schema_and_samples,
         # Include ChaseSQL-specific constants.
         **chase_constants.chase_sql_constants_dict,
     }
     return database_settings
 
 
-def get_bigquery_schema():
+def get_bigquery_schema_and_samples():
     """Retrieves schema and sample values for the BigQuery dataset tables."""
 
     print("========> SHO DEBUG:", compute_project, data_project, dataset_id)
@@ -158,10 +158,10 @@ The database structure is defined by the following table schemas (possibly with 
 
    """
 
-    ddl_schema = tool_context.state["database_settings"]["bq_ddl_schema"]
+    bq_schema_and_samples = tool_context.state["database_settings"]["bq_schema_and_samples"]
 
     prompt = prompt_template.format(
-        MAX_NUM_ROWS=MAX_NUM_ROWS, SCHEMA=ddl_schema, QUESTION=question
+        MAX_NUM_ROWS=MAX_NUM_ROWS, SCHEMA=bq_schema_and_samples, QUESTION=question
     )
 
     response = llm_client.models.generate_content(
