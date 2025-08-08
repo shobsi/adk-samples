@@ -19,6 +19,7 @@ These instructions guide the agent's behavior, workflow, and tool usage.
 """
 
 import os
+from data_science.utils.utils import get_env_var
 
 
 def return_instructions_bigquery() -> str:
@@ -48,6 +49,8 @@ def return_instructions_bigquery() -> str:
 
       NOTE: you should ALWAYS USE THE TOOL {db_tool_name} to generate SQL, not make up SQL WITHOUT CALLING TOOLS.
       Keep in mind that you are an orchestration agent, not a SQL expert, so use the tools to help you generate SQL, but do not make up SQL.
+
+      NOTE: you must ALWAYS PASS the project_id {get_env_var("BQ_COMPUTE_PROJECT_ID")} to the execute_sql tool. DO NOT pass any other project id.
 
     """
 
