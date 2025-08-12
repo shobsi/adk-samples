@@ -89,8 +89,6 @@ def update_database_settings():
 
 def get_bigquery_schema_and_samples():
     """Retrieves schema and sample values for the BigQuery dataset tables."""
-
-    print("========> SHO DEBUG:", compute_project, data_project, dataset_id)
     client=get_bigquery_client(project=compute_project, credentials=None)
     dataset_ref = bigquery.DatasetReference(data_project, dataset_id)
     tables_context = {}
