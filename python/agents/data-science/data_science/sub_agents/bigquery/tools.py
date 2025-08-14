@@ -78,7 +78,7 @@ def update_database_settings():
     global database_settings
     schema_and_samples = get_bigquery_schema_and_samples()
     database_settings = {
-        "bq_project_id": get_env_var("BQ_DATA_PROJECT_ID"),
+        "bq_data_project_id": get_env_var("BQ_DATA_PROJECT_ID"),
         "bq_dataset_id": get_env_var("BQ_DATASET_ID"),
         "bq_schema_and_samples": schema_and_samples,
         # Include ChaseSQL-specific constants.
