@@ -44,7 +44,7 @@ def setup_before_agent_call(callback_context: CallbackContext) -> None:
             tools.get_database_settings()
 
 
-def handle_after_tool_call(
+def store_results_in_context(
     tool: BaseTool, args: Dict[str, Any], tool_context: ToolContext, tool_response: Dict
 ) -> Optional[Dict]:
 
@@ -80,6 +80,6 @@ database_agent = Agent(
         bigquery_toolset,
     ],
     before_agent_callback=setup_before_agent_call,
-    after_tool_callback=handle_after_tool_call,
+    after_tool_callback=store_results_in_context,
     generate_content_config=types.GenerateContentConfig(temperature=0.01),
 )
